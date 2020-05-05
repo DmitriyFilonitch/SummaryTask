@@ -2,6 +2,7 @@ package ua.nure.filonitch.summarytask.servlet;
 
 import java.io.IOException;
 
+
 import java.sql.Connection;
 import java.sql.SQLException;
 
@@ -13,6 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
+
 import ua.nure.filonitch.summarytask.beans.UserAccount;
 import ua.nure.filonitch.summarytask.utils.DBUtils;
 import ua.nure.filonitch.summarytask.utils.MyUtils;
@@ -20,11 +23,13 @@ import ua.nure.filonitch.summarytask.utils.MyUtils;
 /**
  * @author D.Filonich
  *
- * BANKING USER MONEY ACCOUNT SERVLET
+ *         BANKING USER MONEY ACCOUNT SERVLET
  *
  */
 @WebServlet(urlPatterns = { "/bank" })
 public class BankServlet extends HttpServlet {
+	private static final Logger LOGGER = Logger.getLogger(BankServlet.class);
+
 	private static final long serialVersionUID = 1L;
 
 	public BankServlet() {
@@ -34,6 +39,9 @@ public class BankServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		LOGGER.debug("DOGET");
+		
 		Connection conn = MyUtils.getStoredConnection(request);
 
 		int user_id = Integer.parseInt(request.getParameter("user_id"));
@@ -70,6 +78,9 @@ public class BankServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		LOGGER.debug("DOPOST");
+		
 		Connection conn = MyUtils.getStoredConnection(request);
 		HttpSession session = request.getSession();
 		UserAccount loginedUser = MyUtils.getLoginedUser(session);

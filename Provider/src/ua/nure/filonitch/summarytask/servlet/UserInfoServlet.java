@@ -3,6 +3,7 @@ package ua.nure.filonitch.summarytask.servlet;
 import java.io.IOException;
 
 
+
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
@@ -23,6 +24,8 @@ import ua.nure.filonitch.summarytask.utils.DBUtils;
 import ua.nure.filonitch.summarytask.utils.Manipulate;
 import ua.nure.filonitch.summarytask.utils.MyUtils;
 
+import org.apache.log4j.Logger;
+
 /**
  * @author D.Filonich
  *
@@ -31,6 +34,7 @@ import ua.nure.filonitch.summarytask.utils.MyUtils;
  */
 @WebServlet(urlPatterns = { "/userInfo" })
 public class UserInfoServlet extends HttpServlet {
+	private static final Logger LOGGER = Logger.getLogger(UserInfoServlet.class);
 	private static final long serialVersionUID = 1L;
 
 	public UserInfoServlet() {
@@ -41,6 +45,7 @@ public class UserInfoServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		LOGGER.debug("DOGET");
 		Connection conn = MyUtils.getStoredConnection(request);
 		HttpSession session = request.getSession();
 

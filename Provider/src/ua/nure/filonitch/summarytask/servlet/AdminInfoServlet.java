@@ -2,7 +2,6 @@ package ua.nure.filonitch.summarytask.servlet;
 
 import java.io.IOException;
 
-
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
@@ -23,14 +22,17 @@ import ua.nure.filonitch.summarytask.utils.DBUtils;
 import ua.nure.filonitch.summarytask.utils.Manipulate;
 import ua.nure.filonitch.summarytask.utils.MyUtils;
 
+import org.apache.log4j.Logger;
+
 /**
  * @author D.Filonich
  *
- * ADMIN SERVLET
+ *         ADMIN SERVLET
  *
  */
 @WebServlet(urlPatterns = { "/adminInfo" })
 public class AdminInfoServlet extends HttpServlet {
+	private static final Logger LOGGER = Logger.getLogger(AdminInfoServlet.class);
 	private static final long serialVersionUID = 1L;
 
 	public AdminInfoServlet() {
@@ -40,6 +42,8 @@ public class AdminInfoServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		LOGGER.debug("DOGET");
 
 		HttpSession session = request.getSession();
 		Connection conn = MyUtils.getStoredConnection(request);

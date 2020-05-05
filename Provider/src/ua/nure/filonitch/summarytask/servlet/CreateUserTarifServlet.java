@@ -24,6 +24,7 @@ import ua.nure.filonitch.summarytask.utils.MyUtils;
  */
 @WebServlet(urlPatterns = { "/createUserTarif" })
 public class CreateUserTarifServlet extends HttpServlet {
+	private static final String REGEX = "[a-zA-Z0-9]+";
 	private static final long serialVersionUID = 1L;
 
 	public CreateUserTarifServlet() {
@@ -57,9 +58,8 @@ public class CreateUserTarifServlet extends HttpServlet {
 
 		// Кодом продукта является строка [a-zA-Z_0-9]
 		// Имеет минимум 1 символ.
-		String regex = "[a-zA-Z0-9]+";
 
-		if (code == null || !code.matches(regex)) {
+		if (code == null || !code.matches(REGEX)) {
 			errorString = "Tarif code is invalid!";
 		}
 

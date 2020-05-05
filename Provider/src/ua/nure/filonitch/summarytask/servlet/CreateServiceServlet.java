@@ -23,6 +23,7 @@ import ua.nure.filonitch.summarytask.utils.MyUtils;
  */
 @WebServlet(urlPatterns = { "/createService" })
 public class CreateServiceServlet extends HttpServlet {
+	private static final String REGEX = "[А-ЯЁа-яё\\s]+";
 	private static final long serialVersionUID = 1L;
 
 	public CreateServiceServlet() {
@@ -55,9 +56,8 @@ public class CreateServiceServlet extends HttpServlet {
 
 		// Кодом продукта является строка [a-zA-Z_0-9]
 		// Имеет минимум 1 символ.
-		String regex = "[А-ЯЁа-яё\\s]+";
 
-		if (service_name == null || !service_name.matches(regex)) {
+		if (service_name == null || !service_name.matches(REGEX)) {
 			errorString = "Service name invalid!";
 		}
 

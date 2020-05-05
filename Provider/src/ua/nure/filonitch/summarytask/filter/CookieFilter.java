@@ -2,6 +2,7 @@ package ua.nure.filonitch.summarytask.filter;
 
 import java.io.IOException;
 
+
 import java.sql.Connection;
 import java.sql.SQLException;
 

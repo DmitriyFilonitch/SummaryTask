@@ -19,11 +19,12 @@ import ua.nure.filonitch.summarytask.utils.MyUtils;
 /**
  * @author D.Filonich
  *
- * CREATE USER SERVLET
+ *         CREATE USER SERVLET
  *
  */
 @WebServlet(urlPatterns = { "/createUser" })
 public class CreateUserServlet extends HttpServlet {
+	private static final String REGEX = "\\w+";
 	private static final long serialVersionUID = 1L;
 
 	public CreateUserServlet() {
@@ -63,9 +64,8 @@ public class CreateUserServlet extends HttpServlet {
 
 		// Кодом продукта является строка [a-zA-Z_0-9]
 		// Имеет минимум 1 символ.
-		String regex = "\\w+";
 
-		if (password == null || !password.matches(regex)) {
+		if (password == null || !password.matches(REGEX)) {
 			errorString = "User password is invalid!";
 		}
 
