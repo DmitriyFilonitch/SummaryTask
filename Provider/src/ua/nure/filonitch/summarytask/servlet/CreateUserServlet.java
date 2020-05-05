@@ -24,6 +24,7 @@ import ua.nure.filonitch.summarytask.utils.MyUtils;
  */
 @WebServlet(urlPatterns = { "/createUser" })
 public class CreateUserServlet extends HttpServlet {
+	
 	private static final String REGEX = "\\w+";
 	private static final long serialVersionUID = 1L;
 

@@ -48,7 +48,7 @@ public class JDBCFilter implements Filter {
 	// Проверить является ли Servlet цель текущего request?
 	private boolean needJDBC(HttpServletRequest request) {
 		System.out.println("JDBC Filter");
-		LOGGER.debug("JDBC Filter");
+		LOGGER.debug("Filter started");
 		//
 		// Servlet Url-pattern: /spath/*
 		//

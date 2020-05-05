@@ -2,7 +2,6 @@ package ua.nure.filonitch.summarytask.servlet;
 
 import java.io.IOException;
 
-
 import java.sql.Connection;
 import java.sql.SQLException;
 
@@ -39,9 +38,9 @@ public class BankServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+
 		LOGGER.debug("DOGET");
-		
+
 		Connection conn = MyUtils.getStoredConnection(request);
 
 		int user_id = Integer.parseInt(request.getParameter("user_id"));
@@ -78,9 +77,9 @@ public class BankServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+
 		LOGGER.debug("DOPOST");
-		
+
 		Connection conn = MyUtils.getStoredConnection(request);
 		HttpSession session = request.getSession();
 		UserAccount loginedUser = MyUtils.getLoginedUser(session);
@@ -93,9 +92,9 @@ public class BankServlet extends HttpServlet {
 			e1.printStackTrace();
 		}
 		float wantedmoney = Float.parseFloat(request.getParameter("bbb"));
-		System.out.println(wantedmoney);
+		LOGGER.debug("Wanted money : " + wantedmoney);
 		float newbalance = startbalance + wantedmoney;
-		System.out.println(newbalance);
+		LOGGER.debug("New balance will be like : " + wantedmoney);
 		String error = null;
 		if (wantedmoney <= 0) {
 			error = "Сумма не может быть отрицательной или равной 0!!";
