@@ -9,6 +9,7 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
+import javax.servlet.http.HttpServletRequest;
 
 import org.apache.log4j.Logger;
 
@@ -40,7 +41,9 @@ public class EncodingFilter implements Filter {
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
+		HttpServletRequest req = (HttpServletRequest) request;
 		LOGGER.debug("Filter starts");
+		LOGGER.trace("Request uri --> " + req.getServletPath());
 		request.setCharacterEncoding("UTF-8");
 		LOGGER.debug("Filter finished");
 		chain.doFilter(request, response);

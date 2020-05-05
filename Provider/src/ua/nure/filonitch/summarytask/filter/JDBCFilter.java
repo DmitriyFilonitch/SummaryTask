@@ -120,7 +120,8 @@ public class JDBCFilter implements Filter {
 			} finally {
 				ConnectionUtils.closeQuietly(conn);
 			}
-		}
+			LOGGER.debug("Filter finished");
+		} 
 		// Для обычных request (image,css,html,..)
 		// не нужно открывать connection.
 		else {

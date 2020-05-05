@@ -54,7 +54,7 @@ public class LoginServlet extends HttpServlet {
 	// Когда пользователь вводит userName & password, и нажимает Submit.
 	// Этот метод будет выполнен.
 	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		LOGGER.debug("DOPOST");
 		String userName = request.getParameter("userName");
