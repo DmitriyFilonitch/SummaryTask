@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
+
 import ua.nure.filonitch.summarytask.beans.UserAccount;
 import ua.nure.filonitch.summarytask.utils.DBUtils;
 import ua.nure.filonitch.summarytask.utils.MyUtils;
@@ -25,6 +27,7 @@ import ua.nure.filonitch.summarytask.utils.MyUtils;
  */
 @WebServlet(urlPatterns = { "/payTarif" })
 public class PayTarifServlet extends HttpServlet {
+	private static final Logger LOGGER = Logger.getLogger(PayTarifServlet.class);
 	private static final long serialVersionUID = 1L;
 
 	public PayTarifServlet() {
@@ -34,6 +37,9 @@ public class PayTarifServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		LOGGER.debug("DOGET");
+		
 		Connection conn = MyUtils.getStoredConnection(request);
 		HttpSession session = request.getSession();
 

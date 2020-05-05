@@ -34,7 +34,7 @@ public class HomeServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-	    LOGGER.trace("Home doGet");
+		LOGGER.debug("DOGET");
 		HttpSession session = request.getSession();
 		UserAccount loginedUser = MyUtils.getLoginedUser(session);
 		request.setAttribute("user", loginedUser);

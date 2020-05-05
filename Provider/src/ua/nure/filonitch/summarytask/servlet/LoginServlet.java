@@ -13,6 +13,9 @@ import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpSession;
+
+import org.apache.log4j.Logger;
+
 import ua.nure.filonitch.summarytask.beans.UserAccount;
 import ua.nure.filonitch.summarytask.utils.DBUtils;
 import ua.nure.filonitch.summarytask.utils.MyUtils;
@@ -25,6 +28,8 @@ import ua.nure.filonitch.summarytask.utils.MyUtils;
  */
 @WebServlet(urlPatterns = { "/login" })
 public class LoginServlet extends HttpServlet {
+	private static final Logger LOGGER = Logger.getLogger(LoginServlet.class);
+
 	private static final long serialVersionUID = 1L;
 
 	public LoginServlet() {
@@ -35,7 +40,7 @@ public class LoginServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		LOGGER.debug("DOGET");
 		// Forward (перенаправить) к странице /WEB-INF/views/loginView.jsp
 		// (Пользователь не может прямо получить доступ
 		// к страницам JSP расположенные в папке WEB-INF).
@@ -51,6 +56,7 @@ public class LoginServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		LOGGER.debug("DOPOST");
 		String userName = request.getParameter("userName");
 		String password = request.getParameter("password");
 		String rememberMeStr = request.getParameter("rememberMe");

@@ -15,6 +15,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
+
 import ua.nure.filonitch.summarytask.beans.Tarif;
 import ua.nure.filonitch.summarytask.utils.DBUtils;
 import ua.nure.filonitch.summarytask.utils.Manipulate;
@@ -28,6 +30,7 @@ import ua.nure.filonitch.summarytask.utils.MyUtils;
  */
 @WebServlet(urlPatterns = { "/showTarif" })
 public class ShowTarifServlet extends HttpServlet {
+	private static final Logger LOGGER = Logger.getLogger(ShowTarifServlet.class);
 	private static final long serialVersionUID = 1L;
 
 	public ShowTarifServlet() {
@@ -38,6 +41,9 @@ public class ShowTarifServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		LOGGER.debug("DOGET");
+		
 		Connection conn = MyUtils.getStoredConnection(request);
 		HttpSession session = request.getSession();
 		String opT = request.getParameter("opT");

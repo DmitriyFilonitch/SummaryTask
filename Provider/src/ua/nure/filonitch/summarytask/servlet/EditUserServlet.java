@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 import ua.nure.filonitch.summarytask.beans.UserAccount;
 import ua.nure.filonitch.summarytask.utils.DBUtils;
 import ua.nure.filonitch.summarytask.utils.MyUtils;
@@ -24,6 +26,9 @@ import ua.nure.filonitch.summarytask.utils.MyUtils;
  */
 @WebServlet(urlPatterns = { "/editUser" })
 public class EditUserServlet extends HttpServlet {
+	
+	private static final Logger LOGGER = Logger.getLogger(EditUserServlet.class);
+	
 	private static final long serialVersionUID = 1L;
 
 	public EditUserServlet() {
@@ -34,6 +39,9 @@ public class EditUserServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		LOGGER.debug("DOGET");
+		
 		Connection conn = MyUtils.getStoredConnection(request);
 
 		int user_id = Integer.parseInt(request.getParameter("user_id"));
@@ -74,6 +82,9 @@ public class EditUserServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		LOGGER.debug("DOPOST");
+		
 		Connection conn = MyUtils.getStoredConnection(request);
 
 		int user_id = Integer.parseInt(request.getParameter("user_id"));

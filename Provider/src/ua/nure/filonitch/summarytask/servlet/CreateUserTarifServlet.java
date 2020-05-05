@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 import ua.nure.filonitch.summarytask.beans.UserTarif;
 import ua.nure.filonitch.summarytask.utils.DBUtils;
 import ua.nure.filonitch.summarytask.utils.MyUtils;
@@ -24,6 +26,7 @@ import ua.nure.filonitch.summarytask.utils.MyUtils;
  */
 @WebServlet(urlPatterns = { "/createUserTarif" })
 public class CreateUserTarifServlet extends HttpServlet {
+	private static final Logger LOGGER = Logger.getLogger(CreateUserTarifServlet.class);
 	private static final String REGEX = "[a-zA-Z0-9]+";
 	private static final long serialVersionUID = 1L;
 
@@ -35,6 +38,8 @@ public class CreateUserTarifServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		LOGGER.debug("DOGET");
 
 		RequestDispatcher dispatcher = request.getServletContext()
 				.getRequestDispatcher("/WEB-INF/views/createUserTarifView.jsp");
@@ -46,6 +51,9 @@ public class CreateUserTarifServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		LOGGER.debug("DOPOST");
+		
 		Connection conn = MyUtils.getStoredConnection(request);
 
 		int id_user = Integer.parseInt(request.getParameter("id_user"));

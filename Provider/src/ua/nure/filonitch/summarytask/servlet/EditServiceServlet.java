@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 import ua.nure.filonitch.summarytask.beans.Services;
 import ua.nure.filonitch.summarytask.utils.DBUtils;
 import ua.nure.filonitch.summarytask.utils.MyUtils;
@@ -24,6 +26,8 @@ import ua.nure.filonitch.summarytask.utils.MyUtils;
  */
 @WebServlet(urlPatterns = { "/editService" })
 public class EditServiceServlet extends HttpServlet {
+	private static final Logger LOGGER = Logger.getLogger(EditServiceServlet.class);
+
 	private static final long serialVersionUID = 1L;
 
 	public EditServiceServlet() {
@@ -34,6 +38,9 @@ public class EditServiceServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		LOGGER.debug("DOGET");
+		
 		Connection conn = MyUtils.getStoredConnection(request);
 
 		int service_id = Integer.parseInt(request.getParameter("service_id"));
@@ -73,6 +80,9 @@ public class EditServiceServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		LOGGER.debug("DOPOST");
+		
 		Connection conn = MyUtils.getStoredConnection(request);
 
 		int service_id = Integer.parseInt(request.getParameter("service_id"));

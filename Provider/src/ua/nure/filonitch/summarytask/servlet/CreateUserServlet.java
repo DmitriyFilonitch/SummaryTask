@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 import ua.nure.filonitch.summarytask.beans.UserAccount;
 import ua.nure.filonitch.summarytask.utils.DBUtils;
 import ua.nure.filonitch.summarytask.utils.MyUtils;
@@ -24,6 +26,7 @@ import ua.nure.filonitch.summarytask.utils.MyUtils;
  */
 @WebServlet(urlPatterns = { "/createUser" })
 public class CreateUserServlet extends HttpServlet {
+	private static final Logger LOGGER = Logger.getLogger(CreateUserServlet.class);
 	
 	private static final String REGEX = "\\w+";
 	private static final long serialVersionUID = 1L;
@@ -36,6 +39,7 @@ public class CreateUserServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		LOGGER.debug("DOGET");
 
 		RequestDispatcher dispatcher = request.getServletContext()
 				.getRequestDispatcher("/WEB-INF/views/createUserView.jsp");
@@ -47,6 +51,9 @@ public class CreateUserServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		LOGGER.debug("DOPOST");
+		
 		Connection conn = MyUtils.getStoredConnection(request);
 
 		int user_id = Integer.parseInt(request.getParameter("user_id"));
