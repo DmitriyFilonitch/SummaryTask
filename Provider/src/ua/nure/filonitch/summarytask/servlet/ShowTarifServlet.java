@@ -69,21 +69,21 @@ public class ShowTarifServlet extends HttpServlet {
 			e.printStackTrace();
 			errorString = e.getMessage();
 		}
-		if (opT.equals("1")) { // sort by name
+		if (opT.equals("1")) {
 			Manipulate.getTarifSortedByPriceHtL(tarif);
-		} else if (opT.equals("2")) { // sort by name
+		} else if (opT.equals("2")) { 
 			Manipulate.getTarifSortedByPriceLtH(tarif);
-		} else if (opT.equals("3")) { // sort by name
+		} else if (opT.equals("3")) {
 			Manipulate.getTarifSortedByCodeAZ(tarif);
-		} else if (opT.equals("4")) { // sort by name
+		} else if (opT.equals("4")) { 
 			Manipulate.getTarifSortedByCodeZA(tarif);
-		} else if (opT.equals("5")) { // sort by name
+		} else if (opT.equals("5")) { 
 			Manipulate.getTarifSortedByServiceIDHtL(tarif);
-		} else if (opT.equals("6")) { // sort by name
+		} else if (opT.equals("6")) { 
 			Manipulate.getTarifSortedByServiceIDLtH(tarif);
-		}else if (opT.equals("7")) { // sort by name
+		}else if (opT.equals("7")) { 
 			Manipulate.getTarifSortedByNameAZ(tarif);
-		} else if (opT.equals("8")) { // sort by name
+		} else if (opT.equals("8")) { 
 			Manipulate.getTarifSortedByNameZA(tarif);
 		}
 		// Ошибки не имеются.

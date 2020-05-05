@@ -42,7 +42,7 @@ public class AdminInfoServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+
 		LOGGER.debug("DOGET");
 
 		HttpSession session = request.getSession();
@@ -89,7 +89,7 @@ public class AdminInfoServlet extends HttpServlet {
 
 		String errorString = null;
 		List<Tarif> list = null;
-		// List<Services> list2 = null;
+
 		try {
 			list = DBUtils.queryProduct(conn);
 		} catch (SQLException e) {
@@ -97,21 +97,21 @@ public class AdminInfoServlet extends HttpServlet {
 			errorString = e.getMessage();
 		}
 
-		if (opT.equals("1")) { // sort by name
+		if (opT.equals("1")) {
 			Manipulate.getTarifSortedByPriceHtL(list);
-		} else if (opT.equals("2")) { // sort by name
+		} else if (opT.equals("2")) {
 			Manipulate.getTarifSortedByPriceLtH(list);
-		} else if (opT.equals("3")) { // sort by name
+		} else if (opT.equals("3")) {
 			Manipulate.getTarifSortedByCodeAZ(list);
-		} else if (opT.equals("4")) { // sort by name
+		} else if (opT.equals("4")) {
 			Manipulate.getTarifSortedByCodeZA(list);
-		} else if (opT.equals("5")) { // sort by name
+		} else if (opT.equals("5")) {
 			Manipulate.getTarifSortedByServiceIDHtL(list);
-		} else if (opT.equals("6")) { // sort by name
+		} else if (opT.equals("6")) {
 			Manipulate.getTarifSortedByServiceIDLtH(list);
-		} else if (opT.equals("7")) { // sort by name
+		} else if (opT.equals("7")) {
 			Manipulate.getTarifSortedByNameAZ(list);
-		} else if (opT.equals("8")) { // sort by name
+		} else if (opT.equals("8")) {
 			Manipulate.getTarifSortedByNameZA(list);
 		}
 
@@ -128,13 +128,13 @@ public class AdminInfoServlet extends HttpServlet {
 			errorString1 = e1.getMessage();
 		}
 
-		if (opU.equals("1")) { // sort by name
+		if (opU.equals("1")) {
 			Manipulate.getUserSortedByIDHighToLow(list1);
-		} else if (opU.equals("2")) { // sort by name
+		} else if (opU.equals("2")) {
 			Manipulate.getUserSortedByIDLowToHigh(list1);
-		} else if (opU.equals("3")) { // sort by name
+		} else if (opU.equals("3")) {
 			Manipulate.getUsersSortedByUserNameAZ(list1);
-		} else if (opU.equals("4")) { // sort by name
+		} else if (opU.equals("4")) {
 			Manipulate.getUsersSortedByUserNameZA(list1);
 		}
 
@@ -170,13 +170,13 @@ public class AdminInfoServlet extends HttpServlet {
 			errorString3 = e3.getMessage();
 		}
 
-		if (opUT.equals("1")) { // sort by name
+		if (opUT.equals("1")) {
 			Manipulate.getUsersTarifsSortedByIDHighToLow(list3);
-		} else if (opUT.equals("2")) { // sort by name
+		} else if (opUT.equals("2")) {
 			Manipulate.getUsersTarifsSortedByIDLowToHigh(list3);
-		} else if (opUT.equals("3")) { // sort by name
+		} else if (opUT.equals("3")) {
 			Manipulate.getUsersTarifSortedByCodeAZ(list3);
-		} else if (opUT.equals("4")) { // sort by name
+		} else if (opUT.equals("4")) {
 			Manipulate.getUsersTarifSortedByCodeZA(list3);
 		}
 
