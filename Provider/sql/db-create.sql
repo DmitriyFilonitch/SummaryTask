@@ -20,7 +20,7 @@ user_id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
 USER_NAME VARCHAR(30) NOT NULL UNIQUE,
 fullname varchar(50) NOT NULL,
 GENDER    VARCHAR(50) NOT NULL,
-PASSWORD  VARCHAR(30) NOT NULL,
+PASSWORD  VARCHAR(150) NOT NULL,
 balance FLOAT,
 block_status BOOLEAN  NOT NULL DEFAULT FALSE,
 role_id INTEGER NOT NULL,
@@ -61,14 +61,9 @@ INSERT INTO roles VALUES(1, 'admin');
 INSERT INTO roles VALUES(2, 'client');
 
 
-INSERT INTO user_account VALUES(DEFAULT, 'admin', 'Filonitch Dmytriy', 'Male',  'pass',600,DEFAULT, 1);
-INSERT INTO user_account VALUES(DEFAULT, 'lambda', 'Nikolay Smirnov', 'Female',  '111',800 ,TRUE,2);
-INSERT INTO user_account VALUES(DEFAULT, 'vovik', 'Vladimir Khanjan', 'Male',  '222', 1200,DEFAULT,2);
-INSERT INTO user_account VALUES(DEFAULT, 'shurik', 'Alex Dyadchenko', 'Male',  '777', 980,DEFAULT,2);
-INSERT INTO user_account VALUES(DEFAULT, 'troynoy_agent', 'Kirill Troyno', 'Male',  '333', 10000,TRUE,2);
-INSERT INTO user_account VALUES(DEFAULT, 'vano', 'Ivan Palhnits', 'Male',  'vano', 800,DEFAULT,2);
-INSERT INTO user_account VALUES(DEFAULT, 'dimasik', 'Dmytry Oskner', 'Male',  'pinguin', 1200,DEFAULT,2);
-INSERT INTO user_account VALUES(DEFAULT,'marusya', 'Mary Radchenko', 'Female', 'pussya', 9999, DEFAULT,2);
+INSERT INTO user_account VALUES(DEFAULT, 'admin', 'Filonitch Dmytriy', 'Male',  '5b722b307fce6c944905d132691d5e4a2214b7fe92b738920eb3fce3a90420a19511c3010a0e7712b054daef5b57bad59ecbd93b3280f210578f547f4aed4d25',600,DEFAULT, 1);
+INSERT INTO user_account VALUES(DEFAULT, 'lambda', 'Nikolay Smirnov', 'Female',  'fb131bc57a477c8c9d068f1ee5622ac304195a77164ccc2d75d82dfe1a727ba8d674ed87f96143b2b416aacefb555e3045c356faa23e6d21de72b85822e39fdd',800 ,TRUE,2);
+INSERT INTO user_account VALUES(DEFAULT, 'vovik', 'Vladimir Khanjan', 'Male',  '5f28f24f5520230fd1e66ea6ac649e9f9637515f516b2ef74fc90622b60f165eafca8f34db8471b85b9b4a2cdf72f75099ae0eb8860c4f339252261778d406eb', 1200,DEFAULT,2);
 
 INSERT INTO services VALUES (default,'Интернет', 'Безлимитные тарифные планы «Интернет»');
 INSERT INTO services VALUES (default,'Цифровое ТВ (IPTV)', 'Просмотр каналов в цифровом формате IPTV ');
@@ -83,10 +78,5 @@ INSERT INTO TARIF VALUES('P006', 'Эконом-звонки', 40, '60 минут
 
 INSERT INTO users_tarif VALUES('2', 'P001', 1);
 INSERT INTO users_tarif VALUES('3', 'P002', 2);
-INSERT INTO users_tarif VALUES('8', 'P005', 1);
-INSERT INTO users_tarif VALUES('8', 'P002', 1);
-INSERT INTO users_tarif VALUES('8', 'P003', 1);
-INSERT INTO users_tarif VALUES('4', 'P001', 2);
-INSERT INTO users_tarif VALUES('4', 'P004', 2);
 INSERT INTO users_tarif VALUES('1', 'P005', 2);
 

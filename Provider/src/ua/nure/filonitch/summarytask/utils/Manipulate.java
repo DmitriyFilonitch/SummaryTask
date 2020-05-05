@@ -265,7 +265,7 @@ public class Manipulate {
 		if (total > 0) {
 			payment = "ЗАДОЛЖЕННОСТЬ : " + total + " грн!";
 		} else {
-			payment = "ОПЛАЧЕНО!";
+			payment = "ЗАДОЛЖЕННОСТЕЙ НЕТ!";
 		}
 
 		sb2.append("\n\n\t" + "СТАТУС ОПЛАТЫ : ").append(payment)

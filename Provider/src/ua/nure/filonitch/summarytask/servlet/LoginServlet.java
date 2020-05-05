@@ -17,6 +17,7 @@ import javax.servlet.http.HttpSession;
 import org.apache.log4j.Logger;
 
 import ua.nure.filonitch.summarytask.beans.UserAccount;
+import ua.nure.filonitch.summarytask.encryption.PasswordSHAEncryption;
 import ua.nure.filonitch.summarytask.utils.DBUtils;
 import ua.nure.filonitch.summarytask.utils.MyUtils;
 
@@ -66,14 +67,14 @@ public class LoginServlet extends HttpServlet {
 		boolean hasError = false;
 		String errorString = null;
 
-		if (userName == null || password == null || userName.length() == 0 || password.length() == 0) {
+		if (userName == null || PasswordSHAEncryption.encryptPassword(password) == null || userName.length() == 0 || PasswordSHAEncryption.encryptPassword(password).length() == 0) {
 			hasError = true;
 			errorString = "Required username and password!";
 		} else {
 			Connection conn = MyUtils.getStoredConnection(request);
 			try {
 				// Найти user в DB.
-				user = DBUtils.findUser(conn, userName, password);
+				user = DBUtils.findUser(conn, userName, PasswordSHAEncryption.encryptPassword(password));
 
 				if (user == null) {
 					hasError = true;

@@ -37,7 +37,7 @@ public class DBUtils {
 	private static final String DELETE_TARIF_BY_CODE = "DELETE FROM TARIF WHERE CODE= ?";
 	private static final String UPDATE_USER = "UPDATE USER_ACCOUNT  SET USER_NAME=?, FULLNAME=?, GENDER=?, BALANCE=?,BLOCK_STATUS=?  WHERE USER_ID=? ";
 	private static final String UPDATE_SERVICES = "UPDATE SERVICES  SET SERVICE_NAME=?, SERVICE_DESCRIPTION=?  WHERE SERVICE_ID=? ";
-	private static final String INSERT_INTO_USERS_ACCOUNT = "INSERT INTO USER_ACCOUNT(USER_ID, USER_NAME, FULLNAME, GENDER, PASSWORD,BALANCE, ROLE_ID) VALUES (?,?,?,?,?,?,?)";
+	private static final String INSERT_INTO_USERS_ACCOUNT = "INSERT INTO USER_ACCOUNT( USER_NAME, FULLNAME, GENDER, PASSWORD,BALANCE, ROLE_ID) VALUES (?,?,?,?,?,?)";
 	private static final String INSERT_INTO_SERVICES = "INSERT INTO SERVICES (SERVICE_ID, SERVICE_NAME, SERVICE_DESCRIPTION) VALUES (?,?,?)";
 	private static final String DELETE_FROM_SERVICES = "DELETE FROM SERVICES WHERE SERVICE_ID= ?";
 	private static final String DELETE_FROM_USER_ACCOUNT = "DELETE FROM USER_ACCOUNT WHERE USER_ID= ?";
@@ -344,13 +344,12 @@ public class DBUtils {
 
 		PreparedStatement pstm = conn.prepareStatement(INSERT_INTO_USERS_ACCOUNT);
 
-		pstm.setInt(1, user.getUser_id());
-		pstm.setString(2, user.getUserName());
-		pstm.setString(3, user.getFullname());
-		pstm.setString(4, user.getGender());
-		pstm.setString(5, user.getPassword());
-		pstm.setFloat(6, user.getBalance());
-		pstm.setInt(7, user.getRole_id());
+		pstm.setString(1, user.getUserName());
+		pstm.setString(2, user.getFullname());
+		pstm.setString(3, user.getGender());
+		pstm.setString(4, user.getPassword());
+		pstm.setFloat(5, user.getBalance());
+		pstm.setInt(6, user.getRole_id());
 
 		pstm.executeUpdate();
 	}

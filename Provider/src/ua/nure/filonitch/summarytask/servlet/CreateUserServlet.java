@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
 
 import ua.nure.filonitch.summarytask.beans.UserAccount;
+import ua.nure.filonitch.summarytask.encryption.PasswordSHAEncryption;
 import ua.nure.filonitch.summarytask.utils.DBUtils;
 import ua.nure.filonitch.summarytask.utils.MyUtils;
 
@@ -27,7 +28,7 @@ import ua.nure.filonitch.summarytask.utils.MyUtils;
 @WebServlet(urlPatterns = { "/createUser" })
 public class CreateUserServlet extends HttpServlet {
 	private static final Logger LOGGER = Logger.getLogger(CreateUserServlet.class);
-	
+
 	private static final String REGEX = "\\w+";
 	private static final long serialVersionUID = 1L;
 
@@ -51,12 +52,12 @@ public class CreateUserServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+
 		LOGGER.debug("DOPOST");
-		
+
 		Connection conn = MyUtils.getStoredConnection(request);
 
-		int user_id = Integer.parseInt(request.getParameter("user_id"));
+		// int user_id = Integer.parseInt(request.getParameter("user_id"));
 
 		// UserAccount user = null;
 		String userName = (String) request.getParameter("userName");
@@ -66,7 +67,15 @@ public class CreateUserServlet extends HttpServlet {
 		float balance = Float.parseFloat(request.getParameter("balance"));
 		int role_id = Integer.parseInt(request.getParameter("role_id"));
 
-		UserAccount user = new UserAccount(user_id, userName, fullname, gender, password, balance, role_id, null);
+		UserAccount user = new UserAccount();
+
+		// user.setUser_id(user_id);
+		user.setUserName(userName);
+		user.setFullname(fullname);
+		user.setGender(gender);
+		user.setPassword(PasswordSHAEncryption.encryptPassword(password));
+		user.setBalance(balance);
+		user.setRole_id(role_id);
 
 		String errorString = null;
 
