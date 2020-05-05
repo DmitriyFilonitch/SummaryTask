@@ -19,6 +19,8 @@ import ua.nure.filonitch.summarytask.utils.MyUtils;
 /**
  * @author D.Filonich
  *
+ * CREATE USER SERVLET
+ *
  */
 @WebServlet(urlPatterns = { "/createUser" })
 public class CreateUserServlet extends HttpServlet {

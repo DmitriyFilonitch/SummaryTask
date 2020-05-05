@@ -3,6 +3,8 @@ package ua.nure.filonitch.summarytask.beans;
 /**
  * @author D.Filonich
  *
+ * TARIFF ENTITY
+ *
  */
 public class Tarif {
 

@@ -21,6 +21,8 @@ import ua.nure.filonitch.summarytask.utils.MyUtils;
 /**
  * @author D.Filonich
  *
+ * ADDING TARIF TO USER SERVLET BY USER
+ *
  */
 @WebServlet(urlPatterns = { "/addTarif" })
 public class AddTarifToUserServlet extends HttpServlet {

@@ -2,6 +2,7 @@ package ua.nure.filonitch.summarytask.servlet;
 
 import java.io.IOException;
 
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,6 +19,8 @@ import ua.nure.filonitch.summarytask.utils.MyUtils;
 
 /**
  * @author D.Filonich
+ *
+ * LOGIN IN SERVLET
  *
  */
 @WebServlet(urlPatterns = { "/login" })

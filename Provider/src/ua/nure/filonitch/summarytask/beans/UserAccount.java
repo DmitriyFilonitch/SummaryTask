@@ -3,6 +3,8 @@ package ua.nure.filonitch.summarytask.beans;
 /**
  * @author D.Filonich
  *
+ * USER ENTITY
+ *
  */
 public class UserAccount {
 

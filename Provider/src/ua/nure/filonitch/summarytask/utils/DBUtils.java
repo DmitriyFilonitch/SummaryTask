@@ -16,6 +16,8 @@ import ua.nure.filonitch.summarytask.beans.UserTarif;
 /**
  * @author D.Filonich
  *
+ * METHODS FOR EXECUTING AND PROCCESSING SQL REQUESTS
+ *
  */
 public class DBUtils {
 	/*

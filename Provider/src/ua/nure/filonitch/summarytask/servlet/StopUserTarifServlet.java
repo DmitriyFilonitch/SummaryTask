@@ -20,6 +20,8 @@ import ua.nure.filonitch.summarytask.utils.MyUtils;
 /**
  * @author D.Filonich
  *
+ * DISCONNECT TARIF FROM ACTIVE USER TARIF LIST BY USER IN USERACCOUNT
+ *
  */
 @WebServlet(urlPatterns = { "/deleteUserInfoTarif" })
 public class StopUserTarifServlet extends HttpServlet {

@@ -20,7 +20,7 @@ import ua.nure.filonitch.summarytask.utils.MyUtils;
 /**
  * @author D.Filonich
  *
- * BANK SERVLET
+ * BANKING USER MONEY ACCOUNT SERVLET
  *
  */
 @WebServlet(urlPatterns = { "/bank" })

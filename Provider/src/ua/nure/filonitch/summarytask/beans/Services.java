@@ -1,5 +1,11 @@
 package ua.nure.filonitch.summarytask.beans;
 
+/**
+ * @author D.Filonich
+ *
+ * SERVICES ENTITY
+ *
+ */
 public class Services {
 
 	private int service_id;
@@ -13,15 +19,9 @@ public class Services {
 	}
 
 	public Services() {
-		// TODO Auto-generated constructor stub
+	
 	}
-	/*public int compareTo(Object c1) {
-        Services cus=null;
-        if(c1 instanceof Services) {
-             cus = (Services)c1;
-        }
-        return service_name.compareTo(cus.getService_name());
-    }*/
+
 	@Override
 	public String toString() {
 		return "Services [service_id=" + service_id + ", service_name=" + service_name + ", service_description="

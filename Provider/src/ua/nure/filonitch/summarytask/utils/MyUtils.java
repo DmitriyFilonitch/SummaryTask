@@ -13,6 +13,8 @@ import ua.nure.filonitch.summarytask.beans.UserAccount;
 /**
  * @author D.Filonich
  *
+ * CONNECTION COOCKIES LIFE CLASS
+ *
  */
 public class MyUtils {
 
@@ -23,7 +25,7 @@ public class MyUtils {
 	// Сохранить Connection в attribute в request.
 	// Данная информация хранения существует только во время запроса (request)
 	// до тех пор, пока данные возвращаются приложению пользователя.
-	public static void storeConnection(ServletRequest request, Connection conn) {
+	public static void storeConnection(ServletRequest request, Connection conn) { 
 		request.setAttribute(ATT_NAME_CONNECTION, conn);
 	}
 

@@ -22,6 +22,8 @@ import ua.nure.filonitch.summarytask.utils.MyUtils;
 /**
  * @author D.Filonich
  *
+ * ORDERING NEW TARIF SERVLET
+ *
  */
 @WebServlet(urlPatterns = { "/orderTarif" })
 public class orderTarifServlet extends HttpServlet {

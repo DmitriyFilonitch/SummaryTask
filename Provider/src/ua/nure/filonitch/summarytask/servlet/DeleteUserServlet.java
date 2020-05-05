@@ -18,6 +18,8 @@ import ua.nure.filonitch.summarytask.utils.MyUtils;
 /**
  * @author D.Filonich
  *
+ * DELETE USER SERVLET
+ *
  */
 @WebServlet(urlPatterns = { "/deleteUser" })
 public class DeleteUserServlet extends HttpServlet {

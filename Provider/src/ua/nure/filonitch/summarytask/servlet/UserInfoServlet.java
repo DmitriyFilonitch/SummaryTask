@@ -26,7 +26,7 @@ import ua.nure.filonitch.summarytask.utils.MyUtils;
 /**
  * @author D.Filonich
  *
- * USER SERVLET
+ * USER PERSONAL CABINET SERVLET
  *
  */
 @WebServlet(urlPatterns = { "/userInfo" })

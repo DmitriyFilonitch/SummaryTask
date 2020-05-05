@@ -17,6 +17,8 @@ import ua.nure.filonitch.summarytask.utils.MyUtils;
 /**
  * @author D.Filonich
  *
+ * DELETE TARIF SERVLET
+ *
  */
 @WebServlet(urlPatterns = { "/deleteTarif" })
 public class DeleteTarifServlet extends HttpServlet {

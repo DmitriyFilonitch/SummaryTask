@@ -18,7 +18,7 @@ import ua.nure.filonitch.summarytask.utils.MyUtils;
 /**
  * @author D.Filonich
  *
- * CREATE SERVICE SERVLET
+ * CREATE NEW SERVICE SERVLET
  *
  */
 @WebServlet(urlPatterns = { "/createService" })

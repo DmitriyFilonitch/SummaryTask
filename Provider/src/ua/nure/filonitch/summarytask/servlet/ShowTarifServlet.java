@@ -23,6 +23,8 @@ import ua.nure.filonitch.summarytask.utils.MyUtils;
 /**
  * @author D.Filonich
  *
+ * SHOW LIST OF TARIFFS FOR CHOOSING
+ *
  */
 @WebServlet(urlPatterns = { "/showTarif" })
 public class ShowTarifServlet extends HttpServlet {

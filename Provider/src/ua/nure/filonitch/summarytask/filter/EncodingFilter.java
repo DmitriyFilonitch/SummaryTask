@@ -2,7 +2,6 @@ package ua.nure.filonitch.summarytask.filter;
 
 import java.io.IOException;
 
-
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -20,13 +19,14 @@ import org.apache.log4j.Logger;
 @WebFilter(filterName = "encodingFilter", urlPatterns = { "/*" })
 public class EncodingFilter implements Filter {
 	private static final Logger LOGGER = Logger.getLogger(EncodingFilter.class);
+
 	public EncodingFilter() {
 	}
 
 	@Override
 	public void init(FilterConfig fConfig) throws ServletException {
 		LOGGER.debug("Filter initialization starts");
-		
+
 		LOGGER.debug("Filter initialization finished");
 	}
 

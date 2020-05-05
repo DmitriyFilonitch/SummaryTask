@@ -19,6 +19,8 @@ import ua.nure.filonitch.summarytask.utils.MyUtils;
 /**
  * @author D.Filonich
  *
+ * EDIT SERVICE SERVLET
+ *
  */
 @WebServlet(urlPatterns = { "/editService" })
 public class EditServiceServlet extends HttpServlet {

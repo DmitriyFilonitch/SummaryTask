@@ -3,6 +3,12 @@ package ua.nure.filonitch.summarytask.conn;
 import java.sql.Connection;
 import java.sql.SQLException;
  
+/**
+ * @author D.Filonich
+ *
+ * MANAGEMENT OF CONNECTION
+ *
+ */
 public class ConnectionUtils {
  
     public static Connection getConnection() 

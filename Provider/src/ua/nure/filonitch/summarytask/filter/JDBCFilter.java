@@ -21,6 +21,10 @@ import ua.nure.filonitch.summarytask.utils.MyUtils;
 
 import org.apache.log4j.Logger;
 
+/**
+ * @author D.Filonich
+ *
+ */
 @WebFilter(filterName = "jdbcFilter", urlPatterns = { "/*" })
 public class JDBCFilter implements Filter {
 	private static final Logger LOGGER = Logger.getLogger(JDBCFilter.class);
@@ -88,8 +92,8 @@ public class JDBCFilter implements Filter {
 		// Избегать открытия Connection для обычных запросов.
 		// (Например image, css, javascript,... )
 		if (this.needJDBC(req)) {
-			
-			//System.out.println("Open Connection for: " + req.getServletPath());
+
+			// System.out.println("Open Connection for: " + req.getServletPath());
 			LOGGER.trace("Request uri --> " + req.getServletPath());
 
 			Connection conn = null;

@@ -5,6 +5,12 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
 
+/**
+ * @author D.Filonich
+ *
+ * MANAGEMENT OF MYSQL CONNECTION
+ *
+ */
 public class MySQLConnUtils {
 	private static final String CONNECTION_URL = "jdbc:mysql://localhost:3306/provider?user=root&password=1333&serverTimezone=UTC";
 

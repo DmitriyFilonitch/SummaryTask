@@ -18,6 +18,8 @@ import ua.nure.filonitch.summarytask.utils.MyUtils;
 /**
  * @author D.Filonich
  *
+ * DISCONNECT TARIF FROM USER SERVLET
+ *
  */
 @WebServlet(urlPatterns = { "/deleteUserTarif" })
 public class DeleteUserTarifServlet extends HttpServlet {

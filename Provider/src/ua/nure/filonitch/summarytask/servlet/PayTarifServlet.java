@@ -20,6 +20,8 @@ import ua.nure.filonitch.summarytask.utils.MyUtils;
 /**
  * @author D.Filonich
  *
+ * PAY FRO CHOOSEN TARIFFS SERVLET
+ *
  */
 @WebServlet(urlPatterns = { "/payTarif" })
 public class PayTarifServlet extends HttpServlet {

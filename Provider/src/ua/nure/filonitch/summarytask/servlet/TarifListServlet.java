@@ -21,6 +21,8 @@ import ua.nure.filonitch.summarytask.utils.MyUtils;
 /**
  * @author D.Filonich
  *
+ * LISTOF TARIFFS SERVLET
+ *
  */
 
 @WebServlet(urlPatterns = { "/tarifList" })

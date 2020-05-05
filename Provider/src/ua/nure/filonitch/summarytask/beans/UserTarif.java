@@ -3,6 +3,8 @@ package ua.nure.filonitch.summarytask.beans;
 /**
  * @author D.Filonich
  *
+ * USER TARIF ENTITY
+ *
  */
 public class UserTarif {
 	private int id_user;

@@ -18,6 +18,8 @@ import ua.nure.filonitch.summarytask.utils.MyUtils;
 /**
  * @author D.Filonich
  *
+ * CREATE NEW TARIF SERVLET
+ *
  */
 @WebServlet(urlPatterns = { "/createTarif" })
 public class CreateTarifServlet extends HttpServlet {

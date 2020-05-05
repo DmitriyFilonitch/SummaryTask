@@ -19,6 +19,8 @@ import ua.nure.filonitch.summarytask.utils.MyUtils;
 /**
  * @author D.Filonich
  *
+ * CONNECT USER TO TARIF BY ADMIN
+ *
  */
 @WebServlet(urlPatterns = { "/createUserTarif" })
 public class CreateUserTarifServlet extends HttpServlet {

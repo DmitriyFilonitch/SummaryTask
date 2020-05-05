@@ -19,6 +19,8 @@ import ua.nure.filonitch.summarytask.utils.MyUtils;
 /**
  * @author D.Filonich
  *
+ * EDIT USERS TARIF SERVLT
+ * 
  */
 @WebServlet(urlPatterns = { "/editUserTarif" })
 public class EditUserTarifServlet extends HttpServlet {
