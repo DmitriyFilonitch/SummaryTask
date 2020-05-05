@@ -34,6 +34,7 @@ public class UserClassTest {
 		user.setFullname("Vladimir Khanjian");
 		user.setBlock_status(false);
 		user.setBalance(100);
+		user.setActive_status(true);
 
 		float delta = 0;
 
@@ -46,6 +47,7 @@ public class UserClassTest {
 		Assert.assertEquals("Vladimir Khanjian", user.getFullname());
 		Assert.assertEquals(false, user.isBlock_status());
 		Assert.assertEquals(100, user.getBalance(), delta);
+		Assert.assertEquals(true, user.isActive_status());
 
 	}
 }
