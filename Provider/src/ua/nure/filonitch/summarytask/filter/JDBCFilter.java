@@ -23,7 +23,7 @@ import org.apache.log4j.Logger;
 
 @WebFilter(filterName = "jdbcFilter", urlPatterns = { "/*" })
 public class JDBCFilter implements Filter {
-	private static final Logger LOGGER = Logger.getLogger(EncodingFilter.class);
+	private static final Logger LOGGER = Logger.getLogger(JDBCFilter.class);
 
 	public JDBCFilter() {
 	}
@@ -44,7 +44,7 @@ public class JDBCFilter implements Filter {
 	// Проверить является ли Servlet цель текущего request?
 	private boolean needJDBC(HttpServletRequest request) {
 		System.out.println("JDBC Filter");
-		LOGGER.debug("Filter started");
+		LOGGER.debug("JDBC Filter");
 		//
 		// Servlet Url-pattern: /spath/*
 		//
@@ -81,16 +81,15 @@ public class JDBCFilter implements Filter {
 			throws IOException, ServletException {
 
 		HttpServletRequest req = (HttpServletRequest) request;
+		LOGGER.debug("Filter starts");
 
 		// Открыть connection (соединение) только для request со специальной ссылкой.
 		// (Например ссылка к servlet, jsp, ..)
 		// Избегать открытия Connection для обычных запросов.
 		// (Например image, css, javascript,... )
 		if (this.needJDBC(req)) {
-			if (LOGGER.isDebugEnabled()) {
-				LOGGER.trace("This is debug");
-			}
-			System.out.println("Open Connection for: " + req.getServletPath());
+			
+			//System.out.println("Open Connection for: " + req.getServletPath());
 			LOGGER.trace("Request uri --> " + req.getServletPath());
 
 			Connection conn = null;
@@ -105,7 +104,7 @@ public class JDBCFilter implements Filter {
 
 				// Разрешить request продвигаться далее.
 				// (Далее к следующему Filter tiếp или к цели).
-				LOGGER.debug("Filter finished");
+				LOGGER.debug("Allow next request");
 				chain.doFilter(request, response);
 
 				// Вызвать метод commit() чтобы завершить транзакцию с DB.

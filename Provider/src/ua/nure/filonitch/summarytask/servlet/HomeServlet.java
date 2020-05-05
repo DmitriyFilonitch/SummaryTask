@@ -22,7 +22,7 @@ import org.apache.log4j.Logger;
  */
 @WebServlet(urlPatterns = { "/home" })
 public class HomeServlet extends HttpServlet {
-	private static final Logger LOGGER = Logger.getLogger(EncodingFilter.class);
+	//private static final Logger LOGGER = Logger.getLogger(EncodingFilter.class);
 	private static final long serialVersionUID = 1L;
 
 	public HomeServlet() {
@@ -32,7 +32,7 @@ public class HomeServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		 LOGGER.trace("Home doGet");
+		// LOGGER.trace("Home doGet");
 		HttpSession session = request.getSession();
 		UserAccount loginedUser = MyUtils.getLoginedUser(session);
 		request.setAttribute("user", loginedUser);
