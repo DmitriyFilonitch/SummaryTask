@@ -18,7 +18,10 @@
 		<jsp:include page="_menu.jsp"></jsp:include>
 		<br />
 
-		<h2><fmt:message key="showtarif_title"></fmt:message>:</h2>
+		<h2>
+			<fmt:message key="showtarif_title"></fmt:message>
+			:
+		</h2>
 		<br />
 		<table border="1" cellpadding="5" cellspacing="1" align="center">
 			<tr>
@@ -44,17 +47,27 @@
 		</table>
 		<form action="showTarif" method="get">
 			<select name="opT">
-				<option value="1">Sort By Price(9-1)
-				<option value="2">Sort By Price(1-9)
-				<option value="3">Sort By Code(A-Z)
-				<option value="4">Sort By Code(Z-A)
-				<option value="5">Sort By Service ID (9-1)
-				<option value="6">Sort By Service ID(1-9)
-				<option value="7">Sort By Name(A-Z)
-				<option value="8">Sort By Name(Z-A)
-			</select> <input type="submit" value="<fmt:message key="admininfo_sort"></fmt:message>">
+				<option value="1"><fmt:message key="sort_by_price"></fmt:message>(9-1)
+				
+				<option value="2"><fmt:message key="sort_by_price"></fmt:message>(1-9)
+				
+				<option value="3"><fmt:message key="sort_by_code"></fmt:message>(A-Z)
+				
+				<option value="4"><fmt:message key="sort_by_code"></fmt:message>(Z-A)
+				
+				<option value="5"><fmt:message key="sort_by_service_id"></fmt:message>(9-1)
+				
+				<option value="6"><fmt:message key="sort_by_service_id"></fmt:message>(1-9)
+				
+				<option value="7"><fmt:message key="sort_by_name"></fmt:message>(A-Z)
+				
+				<option value="8"><fmt:message key="sort_by_name"></fmt:message>(Z-A)
+				
+			</select> <input type="submit"
+				value="<fmt:message key="admininfo_sort"></fmt:message>">
 		</form>
-		<input type="button" value="<fmt:message key="settings_jsp.link.back_to_main_page"></fmt:message>"
+		<input type="button"
+			value="<fmt:message key="settings_jsp.link.back_to_main_page"></fmt:message>"
 			onclick=" location.href=' ${pageContext.request.contextPath}/orderTarif' ">
 		<jsp:include page="_footer.jsp"></jsp:include>
 

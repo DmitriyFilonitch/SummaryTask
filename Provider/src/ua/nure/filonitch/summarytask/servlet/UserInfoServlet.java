@@ -2,8 +2,6 @@ package ua.nure.filonitch.summarytask.servlet;
 
 import java.io.IOException;
 
-
-
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
@@ -29,7 +27,7 @@ import org.apache.log4j.Logger;
 /**
  * @author D.Filonich
  *
- * USER PERSONAL CABINET SERVLET
+ *         USER PERSONAL CABINET SERVLET
  *
  */
 @WebServlet(urlPatterns = { "/userInfo" })
@@ -51,7 +49,7 @@ public class UserInfoServlet extends HttpServlet {
 
 		// Проверить, вошел ли пользователь в систему (login) или нет.
 		UserAccount loginedUser = MyUtils.getLoginedUser(session);
-		String ok = "Contract has been successfully downloaded!";
+		String ok = "✅";
 		if (loginedUser == null) {
 			// Redirect (Перенаправить) к странице login.
 			response.sendRedirect(request.getContextPath() + "/login");

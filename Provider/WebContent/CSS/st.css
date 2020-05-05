@@ -131,3 +131,7 @@ body {
 	order: 1;
 	margin: 0;
 }
+td {
+  text-align: center;
+  vertical-align: middle;
+}

@@ -17,7 +17,7 @@
 			<br />
 			<h3>
 				<fmt:message key="userinfo_hello"></fmt:message>
-				 ${user.userName}
+				${user.userName}
 			</h3>
 
 			<fmt:message key="userinfo_username"></fmt:message>
@@ -72,7 +72,8 @@
 							<c:choose>
 								<c:when test="${total > 0}">
 									<fmt:message key="userinfo_totaltopay"></fmt:message>: ${total} ₴
-		<input type="button" value="Оплатить"
+		<input type="button"
+										value="<fmt:message key="userinfo_pay"></fmt:message>"
 										onclick=" location.href='payTarif?user_id=${user.user_id}' ">
 									<br />
 									<c:choose>
@@ -100,13 +101,13 @@
 
 					<table border="1" cellpadding="5" cellspacing="1" align="center">
 						<tr>
-							<th>Code</th>
-							<th>Name</th>
-							<th>Price</th>
-							<th>Description</th>
-							<th>Service Name</th>
-							<th>Service Description</th>
-							<th>Stop Using Tarif</th>
+							<th><fmt:message key="common_id"></fmt:message></th>
+							<th><fmt:message key="common_name"></fmt:message></th>
+							<th><fmt:message key="price"></fmt:message></th>
+							<th><fmt:message key="common_description"></fmt:message></th>
+							<th><fmt:message key="service_name"></fmt:message></th>
+							<th><fmt:message key="service_description"></fmt:message></th>
+							<th><fmt:message key="turn_off_tariff"></fmt:message></th>
 
 						</tr>
 						<c:forEach items="${tarif}" var="tarif">

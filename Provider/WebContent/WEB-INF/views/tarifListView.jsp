@@ -10,11 +10,13 @@
 <link rel="stylesheet" href="CSS/st.css" type="text/css">
 </head>
 <body>
-<div style="text-align:center">
+	<div style="text-align: center">
 		<jsp:include page="_header.jsp"></jsp:include>
 		<jsp:include page="_menu.jsp"></jsp:include>
 		<br />
-		<h3><fmt:message key="tariflist_tariflist"></fmt:message></h3>
+		<h3>
+			<fmt:message key="tariflist_tariflist"></fmt:message>
+		</h3>
 
 		<p style="color: red;">${errorString}</p>
 
@@ -36,12 +38,16 @@
 				</tr>
 			</c:forEach>
 		</table>
-		<br/>
-		<h2><fmt:message key="tariflist_message1"></fmt:message> <a href="userInfo">↗️</a><fmt:message key="tariflist_message2"></fmt:message></h2>
+		<br />
+		<h2>
+			<fmt:message key="tariflist_message1"></fmt:message>
+			<a href="userInfo">↗️</a>
+			<fmt:message key="tariflist_message2"></fmt:message>
+		</h2>
 
-		
-</div>
-		<jsp:include page="_footer.jsp"></jsp:include>
-	
+
+	</div>
+	<jsp:include page="_footer.jsp"></jsp:include>
+
 </body>
 </html>
