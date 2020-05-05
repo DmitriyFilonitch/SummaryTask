@@ -23,24 +23,24 @@ public class DBUtils {
 	/*
 	 * SQL REQUESTS
 	 */
-	private static final String SELECT_USER_BY_USERNAME_AND_PASSWORD = "SELECT USER_ID, USER_NAME, FULLNAME , PASSWORD, balance , GENDER,BLOCK_STATUS, ROLE_ID, NAME FROM USER_ACCOUNT INNER JOIN ROLES ON USER_ACCOUNT.ROLE_ID=ROLES.ID WHERE USER_NAME = ? AND PASSWORD= ?";
-	private static final String SELECT_USER_BY_USERNAME = "SELECT A.USER_ID, A.USER_NAME, A.PASSWORD,A.balance, A.BLOCK_STATUS,  A.GENDER FROM USER_ACCOUNT A  WHERE A.USER_NAME = ?";
+	private static final String SELECT_USER_BY_USERNAME_AND_PASSWORD = "SELECT USER_ID, USER_NAME, FULLNAME , PASSWORD, balance , GENDER,BLOCK_STATUS, ROLE_ID,ACTIVE_STATUS , NAME FROM USER_ACCOUNT INNER JOIN ROLES ON USER_ACCOUNT.ROLE_ID=ROLES.ID WHERE USER_NAME = ? AND PASSWORD= ? AND ACTIVE_STATUS = TRUE";
+	private static final String SELECT_USER_BY_USERNAME = "SELECT A.USER_ID, A.USER_NAME, A.PASSWORD,A.balance, A.BLOCK_STATUS,  A.GENDER, A.ACTIVE_STATUS FROM USER_ACCOUNT A  WHERE A.USER_NAME = ?";
 	private static final String SELECT_ALL_FROM_TARIF_AND_SERVICES = "SELECT * FROM TARIF INNER JOIN SERVICES ON TARIF.SERVICE_ID=SERVICES.SERVICE_ID";
 	private static final String SELECT_ALL_USERS = "SELECT * FROM USER_ACCOUNT INNER JOIN ROLES ON USER_ACCOUNT.ROLE_ID = ROLES.ID";
 	private static final String SELECT_ALL_SERVICES = "SELECT * FROM SERVICES";
 	private static final String SELECT_ALL_USERS_TARIF = "SELECT * FROM USERS_TARIF";
 	private static final String SELECT_TARIF_BY_CODE = "SELECT * FROM TARIF A WHERE A.CODE=?";
-	private static final String SELECT_USER_FOR_EDITING = "SELECT USER_ID, USER_NAME, FULLNAME , PASSWORD, GENDER,BALANCE,BLOCK_STATUS, ROLE_ID, NAME FROM USER_ACCOUNT INNER JOIN ROLES ON USER_ACCOUNT.ROLE_ID=ROLES.ID WHERE USER_ID=?";
+	private static final String SELECT_USER_FOR_EDITING = "SELECT USER_ID, USER_NAME, FULLNAME , PASSWORD, GENDER,BALANCE,BLOCK_STATUS, ROLE_ID,ACTIVE_STATUS, NAME FROM USER_ACCOUNT INNER JOIN ROLES ON USER_ACCOUNT.ROLE_ID=ROLES.ID WHERE USER_ID=?";
 	private static final String SELECT_SERVICE_BY_ID = "SELECT SERVICE_ID, SERVICE_NAME, SERVICE_DESCRIPTION FROM SERVICES WHERE SERVICE_ID=?";
 	private static final String UPDATE_TARIF_BY_CODE = "UPDATE TARIF SET NAME =?, PRICE=?, DESCRIPTION=?, SERVICE_ID=? WHERE CODE=? ";
 	private static final String INSERT_INTO_TARIF = "INSERT INTO TARIF(CODE, NAME,PRICE, DESCRIPTION, SERVICE_ID) VALUES (?,?,?,?,?)";
 	private static final String DELETE_TARIF_BY_CODE = "DELETE FROM TARIF WHERE CODE= ?";
-	private static final String UPDATE_USER = "UPDATE USER_ACCOUNT  SET USER_NAME=?, FULLNAME=?, GENDER=?, BALANCE=?,BLOCK_STATUS=?  WHERE USER_ID=? ";
+	private static final String UPDATE_USER = "UPDATE USER_ACCOUNT  SET USER_NAME=?, FULLNAME=?, GENDER=?, BALANCE=?,BLOCK_STATUS=?, ACTIVE_STATUS=?  WHERE USER_ID=? ";
 	private static final String UPDATE_SERVICES = "UPDATE SERVICES  SET SERVICE_NAME=?, SERVICE_DESCRIPTION=?  WHERE SERVICE_ID=? ";
 	private static final String INSERT_INTO_USERS_ACCOUNT = "INSERT INTO USER_ACCOUNT( USER_NAME, FULLNAME, GENDER, PASSWORD,BALANCE, ROLE_ID) VALUES (?,?,?,?,?,?)";
 	private static final String INSERT_INTO_SERVICES = "INSERT INTO SERVICES (SERVICE_ID, SERVICE_NAME, SERVICE_DESCRIPTION) VALUES (?,?,?)";
 	private static final String DELETE_FROM_SERVICES = "DELETE FROM SERVICES WHERE SERVICE_ID= ?";
-	private static final String DELETE_FROM_USER_ACCOUNT = "DELETE FROM USER_ACCOUNT WHERE USER_ID= ?";
+	private static final String DELETE_FROM_USER_ACCOUNT = "UPDATE USER_ACCOUNT  SET ACTIVE_STATUS = FALSE WHERE USER_ID= ?";
 	private static final String SELECT_USER_TARIF = "SELECT * FROM TARIF INNER JOIN USERS_TARIF  ON TARIF.CODE=USERS_TARIF.CODE  WHERE ID_USER =? ";
 	private static final String SELECT_USERS_TARIFS = "SELECT * FROM SERVICES INNER JOIN TARIF INNER JOIN USERS_TARIF ON TARIF.CODE = USERS_TARIF.CODE AND TARIF.SERVICE_ID = SERVICES.SERVICE_ID WHERE ID_USER =?";
 	private static final String SELECT_USERS_SERVICES = "SELECT * FROM SERVICES INNER JOIN TARIF INNER JOIN USERS_TARIF ON TARIF.CODE = USERS_TARIF.CODE AND TARIF.SERVICE_ID = SERVICES.SERVICE_ID WHERE ID_USER =?";
@@ -90,16 +90,20 @@ public class DBUtils {
 			float balance = rs.getFloat("balance");
 			boolean block_status = rs.getBoolean("block_status");
 			int role_id1 = rs.getInt("Role_id");
+			boolean active_status = rs.getBoolean("active_status");
 			String nameRole = rs.getString("Name");
-			UserAccount user = new UserAccount(user_id, userName, fullname, gender, null, balance, block_status,
-					role_id1, nameRole);
+			UserAccount user = new UserAccount();
+		
 			user.setUser_id(user_id);
 			user.setUserName(userName);
-			user.setPassword(password);
 			user.setFullname(fullname);
 			user.setGender(gender);
+			user.setBalance(balance);
+			user.setBlock_status(block_status);
 			user.setRole_id(role_id1);
+			user.setActive_status(active_status);
 			user.setNameRole(nameRole);
+			
 			return user;
 		}
 		return null;
@@ -114,16 +118,21 @@ public class DBUtils {
 
 		if (rs.next()) {
 			int user_id = rs.getInt("user_id");
-			String password = rs.getString("Password");
+			//String password = rs.getString("Password");
 			String gender = rs.getString("Gender");
 			float balance = rs.getFloat("balance");
 			boolean block_status = rs.getBoolean("block_status");
+			boolean active_status = rs.getBoolean("active_status");
 			// int role_id = rs.getInt("role_id");
-			UserAccount user = new UserAccount(user_id, userName, null, gender, null, balance, block_status, null);
+			UserAccount user = new UserAccount();
 			user.setUser_id(user_id);
 			user.setUserName(userName);
-			user.setPassword(password);
+
 			user.setGender(gender);
+			user.setBalance(balance);
+			user.setBlock_status(block_status);
+			user.setActive_status(active_status);
+			
 			return user;
 		}
 		return null;
@@ -168,13 +177,17 @@ public class DBUtils {
 			float balance = rs.getFloat("balance");
 			boolean block_status = rs.getBoolean("block_status");
 			int role_id = rs.getInt("role_id");
+			boolean active_status = rs.getBoolean("active_status");
 			String nameRole = rs.getString("name");
-			UserAccount u = new UserAccount(user_id, userName, fullname, gender, null, balance, block_status, role_id,
-					nameRole);
+			UserAccount u = new UserAccount();
 			u.setUser_id(user_id);
 			u.setUserName(userName);
 			u.setFullname(fullname);
 			u.setGender(gender);
+			u.setBalance(balance);
+			u.setBlock_status(block_status);
+			u.setRole_id(role_id);
+			u.setActive_status(active_status);
 			u.setNameRole(nameRole);
 			list.add(u);
 		}
@@ -256,9 +269,20 @@ public class DBUtils {
 			float balance = rs.getFloat("balance");
 			boolean block_status = rs.getBoolean("block_status");
 			int role_id = rs.getInt("role_id");
+			boolean active_status = rs.getBoolean("active_status");
 			String nameRole = rs.getString("name");
-			UserAccount user = new UserAccount(user_id, userName, fullname, gender, null, balance, block_status,
-					role_id, nameRole);
+			UserAccount user = new UserAccount();
+			
+			user.setUser_id(user_id);
+			user.setUserName(userName);
+			user.setFullname(fullname);
+			user.setGender(gender);
+			user.setBalance(balance);
+			user.setBlock_status(block_status);
+			user.setRole_id(role_id);
+			user.setActive_status(active_status);
+			user.setNameRole(nameRole);
+			
 			return user;
 		}
 		return null;
@@ -325,8 +349,8 @@ public class DBUtils {
 		pstm.setString(3, user.getGender());
 		pstm.setFloat(4, user.getBalance());
 		pstm.setBoolean(5, user.isBlock_status());
-		;
-		pstm.setInt(6, user.getUser_id());
+		pstm.setBoolean(6, user.isActive_status());
+		pstm.setInt(7, user.getUser_id());
 		pstm.executeUpdate();
 	}
 
@@ -350,6 +374,7 @@ public class DBUtils {
 		pstm.setString(4, user.getPassword());
 		pstm.setFloat(5, user.getBalance());
 		pstm.setInt(6, user.getRole_id());
+		
 
 		pstm.executeUpdate();
 	}
@@ -418,7 +443,7 @@ public class DBUtils {
 			String service_name = rs.getString("service_name");
 			String service_description = rs.getString("service_description");
 
-			Tarif tarif = new Tarif(code, name, price, description, service_id, service_name, service_description);
+			Tarif tarif = new Tarif();
 			tarif.setCode(code);
 			tarif.setName(name);
 			tarif.setPrice(price);
@@ -443,7 +468,7 @@ public class DBUtils {
 			String service_name = rs.getString("service_name");
 			String service_description = rs.getString("service_description");
 
-			Services services = new Services(service_id, service_name, service_description);
+			Services services = new Services();
 			services.setService_id(service_id);
 			services.setService_name(service_name);
 			services.setService_description(service_description);
@@ -464,8 +489,11 @@ public class DBUtils {
 			int service_id = rs.getInt("service_id");
 			String service_name = rs.getString("service_name");
 			String service_description = rs.getString("service_description");
-			Services service = new Services(service_id, service_name, service_description);
-			return service;
+			Services services = new Services();
+			services.setService_id(service_id);
+			services.setService_name(service_name);
+			services.setService_description(service_description);
+			return services;
 		}
 		return null;
 	}
@@ -481,8 +509,13 @@ public class DBUtils {
 			int service_id = rs.getInt("service_id");
 			String service_name = rs.getString("service_name");
 			String service_description = rs.getString("service_description");
-			Services service = new Services(service_id, service_name, service_description);
-			return service;
+			Services services = new Services();
+			
+			services.setService_id(service_id);
+			services.setService_name(service_name);
+			services.setService_description(service_description);
+			
+			return services;
 		}
 		return null;
 	}

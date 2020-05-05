@@ -251,6 +251,8 @@ public class Manipulate {
 		StringBuffer sb = new StringBuffer();
 		StringBuffer sb2 = new StringBuffer();
 		StringBuffer contract = new StringBuffer("");
+		String status = user.isBlock_status() ? "BLOCKED" : "UNBLOCKED";
+		String active_status = user.isActive_status() ? "Активна" : "Неактивна";
 		DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
 		Date date = new Date();
 		int i = 1;
@@ -270,10 +272,9 @@ public class Manipulate {
 
 		sb2.append("\n\n\t" + "СТАТУС ОПЛАТЫ : ").append(payment)
 				.append("\n\tДАТА ЗАГРУЗКИ : " + dateFormat.format(date));
-		String status = user.isBlock_status() ? "BLOCKED" : "UNBLOCKED";
 		sb.append("Договор №").append(user.getUser_id()).append(" на предоставление услуг\n" + "Пользователю ")
 				.append(user.getFullname()).append("\nЛогин - ").append(user.getUserName()).append("\nСтатус - ")
-				.append(status).append("\nБалланс = ").append(user.getBalance()).append("\nПодключенные услуги:\n\t")
+				.append(status).append("\nУровень учетной записи - ").append(active_status).append("\nБалланс = ").append(user.getBalance()).append("\nПодключенные услуги:\n\t")
 				.append(contract).append(sb2);
 
 		return sb.toString();

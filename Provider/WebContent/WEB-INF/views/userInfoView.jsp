@@ -31,6 +31,8 @@
 			: ${user.nameRole } <br />
 			<fmt:message key="userinfo_user_id"></fmt:message>
 			: ${user.user_id } <br />
+			<fmt:message key="active_status"></fmt:message>
+			: ${active_status} <br />
 			<fmt:message key="userinfo_block_status"></fmt:message>
 			: ${block } <br /> <br /> <input type="button"
 				value="<fmt:message key="userinfo_popolnit"></fmt:message>"

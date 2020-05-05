@@ -158,6 +158,7 @@
 				<th><fmt:message key="userinfo_balance"></fmt:message></th>
 				<th><fmt:message key="userinfo_block_status"></fmt:message></th>
 				<th><fmt:message key="userinfo_rolename"></fmt:message></th>
+				<th><fmt:message key="active_status"></fmt:message></th>
 				<th><fmt:message key="admininfo_edit"></fmt:message></th>
 				<th><fmt:message key="admininfo_delete"></fmt:message></th>
 			</tr>
@@ -170,6 +171,7 @@
 					<td style="text-align: center">${user.balance}</td>
 					<td style="text-align: center">${user.block_status}</td>
 					<td style="text-align: center">${user.nameRole }</td>
+					<td style="text-align: center">${user.active_status}</td>
 					<td style="text-align: center"><input type="button"
 						value="<fmt:message key="admininfo_edit"></fmt:message>"
 						onclick=" location.href='editUser?user_id=${user.user_id}' "></td>

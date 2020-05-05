@@ -83,6 +83,28 @@
 								</c:choose>
 						</select></td>
 					</tr>
+					
+					
+					<tr>
+						<td><fmt:message key="active_status"></fmt:message></td>
+						<td><select name="active_status" size="1">
+
+
+								<c:choose>
+									<c:when test="${not user.active_status }">
+										<option selected="selected" value="false"><fmt:message
+												key="no"></fmt:message></option>
+										<option value="true"><fmt:message key="yes"></fmt:message></option>
+									</c:when>
+									<c:when test="${user.active_status }">
+										<option selected="selected" value="true"><fmt:message
+												key="yes"></fmt:message></option>
+										<option value="false"><fmt:message key="no"></fmt:message></option>
+									</c:when>
+								</c:choose>
+						</select></td>
+					</tr>
+					
 
 					<tr>
 						<td colspan="3"><input type="submit"

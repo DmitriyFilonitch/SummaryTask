@@ -65,6 +65,7 @@ public class UserInfoServlet extends HttpServlet {
 		float total = 0;
 		float balance = 0;
 		boolean block = false;
+		boolean active_status = false;
 		UserAccount user1 = null;
 		UserAccount user2 = null;
 
@@ -75,10 +76,15 @@ public class UserInfoServlet extends HttpServlet {
 			balance = DBUtils.getBalance(conn, id_user);
 			user1 = DBUtils.findUser(conn, userName);
 			block = user1.isBlock_status();
+			active_status = user1.isActive_status();
 
 		} catch (SQLException e) {
 			e.printStackTrace();
 			errorString = e.getMessage();
+		}
+		if(active_status == false) {
+			response.sendRedirect(request.getContextPath() + "/login");
+			return;
 		}
 
 		if (balance < total) {
@@ -98,6 +104,7 @@ public class UserInfoServlet extends HttpServlet {
 			}
 			request.setAttribute("block", user1.isBlock_status());
 		}
+	
 
 		if (request.getParameter("downloadTAriff") != null) {
 
@@ -128,6 +135,7 @@ public class UserInfoServlet extends HttpServlet {
 		session.setAttribute("user1", user1);
 		request.setAttribute("balance", balance);
 		request.setAttribute("block", block);
+		request.setAttribute("active_status", active_status);
 
 		// Если пользователь уже вошел в систему (login), то forward (перенаправить) к
 		// странице

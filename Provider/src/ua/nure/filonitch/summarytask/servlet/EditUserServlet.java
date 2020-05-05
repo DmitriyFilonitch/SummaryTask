@@ -94,8 +94,18 @@ public class EditUserServlet extends HttpServlet {
 		float balance = Float.parseFloat(request.getParameter("balance"));
 		boolean block_status = Boolean.parseBoolean(request.getParameter("block_status"));
 		String nameRole = (String) request.getParameter("name");
+		boolean active_status = Boolean.parseBoolean(request.getParameter("active_status"));
 
-		UserAccount user = new UserAccount(user_id, userName, fullname, gender, null, balance, block_status, nameRole);
+		//UserAccount user = new UserAccount(user_id, userName, fullname, gender, null, balance, block_status, nameRole);
+		UserAccount user = new UserAccount();
+		user.setUser_id(user_id);
+		user.setUserName(userName);
+		user.setFullname(fullname);
+		user.setGender(gender);
+		user.setBalance(balance);
+		user.setBlock_status(block_status);
+		user.setNameRole(nameRole);
+		user.setActive_status(active_status);
 
 		String errorString = null;
 
