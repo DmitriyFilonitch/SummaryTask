@@ -25,22 +25,22 @@
 		<br />
 		<table border="1" cellpadding="5" cellspacing="1" align="center">
 			<tr>
-				<th>Code</th>
-				<th>Name</th>
-				<th>Price</th>
-				<th>Description</th>
-				<th>Service_id</th>
+				<th><fmt:message key="tarif_code"></fmt:message></th>
+				<th><fmt:message key="common_name"></fmt:message></th>
+				<th><fmt:message key="price"></fmt:message></th>
+				<th><fmt:message key="common_description"></fmt:message></th>
+				<th><fmt:message key="service_id"></fmt:message></th>
 				<th><fmt:message key="showtarif_choosetarif"></fmt:message></th>
 
 			</tr>
 			<c:forEach items="${tarifList}" var="tarif">
 				<tr>
-					<td>${tarif.code}</td>
-					<td>${tarif.name}</td>
-					<td>${tarif.price}</td>
-					<td>${tarif.description}</td>
-					<td>${tarif.service_id}</td>
-					<td><input type="button" value="💡"
+					<td style="text-align: center">${tarif.code}</td>
+					<td style="text-align: center">${tarif.name}</td>
+					<td style="text-align: center">${tarif.price}</td>
+					<td style="text-align: center">${tarif.description}</td>
+					<td style="text-align: center">${tarif.service_id}</td>
+					<td style="text-align: center"><input type="button" value="💡"
 						onclick=" location.href='addTarif?code=${tarif.code}' "></td>
 				</tr>
 			</c:forEach>

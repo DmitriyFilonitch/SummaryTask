@@ -25,17 +25,17 @@
 
 		<table border="1" cellpadding="5" cellspacing="1" align="center">
 			<tr>
-				<th>service_id</th>
-				<th>Name</th>
-				<th>Description</th>
+				<th><fmt:message key="service_id"></fmt:message></th>
+				<th><fmt:message key="service_name"></fmt:message></th>
+				<th><fmt:message key="service_description"></fmt:message></th>
 				<th><fmt:message key="ordertarif_chooseservice"></fmt:message></th>
 			</tr>
 			<c:forEach items="${serviceList}" var="service">
 				<tr>
-					<td>${service.service_id}</td>
-					<td>${service.service_name}</td>
-					<td>${service.service_description}</td>
-					<td><input type="button"
+					<td style="text-align: center">${service.service_id}</td>
+					<td style="text-align: center">${service.service_name}</td>
+					<td style="text-align: center">${service.service_description}</td>
+					<td style="text-align: center"><input type="button"
 						value="<fmt:message key="ordertarif_gototarif"></fmt:message>"
 						onclick=" location.href=' showTarif?service_id=${service.service_id}'  "></td>
 
