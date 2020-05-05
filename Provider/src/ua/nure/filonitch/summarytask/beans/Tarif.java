@@ -166,7 +166,7 @@ public class Tarif {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Tarif(String code, String name, float price, String description, int service_id, String service_name,
+/*	public Tarif(String code, String name, float price, String description, int service_id, String service_name,
 			String service_description) {
 		super();
 		this.code = code;
@@ -183,6 +183,6 @@ public class Tarif {
 		this.price = price;
 		this.description = description;
 		this.service_id = service_id;
-	}
+	}*/
 
 }

@@ -227,7 +227,7 @@ public class DBUtils {
 			String code = rs.getString("code");
 			int payment_status = rs.getInt("payment_status");
 
-			UserTarif usertarif = new UserTarif(id_user, code, payment_status);
+			UserTarif usertarif = new UserTarif();
 			usertarif.setId_user(id_user);
 			usertarif.setCode(code);
 			usertarif.setPayment_status(payment_status);
@@ -248,7 +248,12 @@ public class DBUtils {
 			float price = rs.getFloat("Price");
 			String description = rs.getString("description");
 			int service_id = rs.getInt("service_id");
-			Tarif tarif = new Tarif(code, name, price, description, service_id);
+			Tarif tarif = new Tarif();
+			tarif.setCode(code);
+			tarif.setName(name);
+			tarif.setPrice(price);
+			tarif.setDescription(description);
+			tarif.setService_id(service_id);
 			return tarif;
 		}
 		return null;
@@ -420,7 +425,12 @@ public class DBUtils {
 			float price = rs.getFloat("Price");
 			String description = rs.getString("description");
 			int service_id = rs.getInt("service_id");
-			Tarif tarif = new Tarif(code, name, price, description, service_id);
+			Tarif tarif = new Tarif();
+			tarif.setCode(code);
+			tarif.setName(name);
+			tarif.setPrice(price);
+			tarif.setDescription(description);
+			tarif.setService_id(service_id);
 			return tarif;
 		}
 		return null;
@@ -530,7 +540,10 @@ public class DBUtils {
 
 		while (rs.next()) {
 			int payment_status = rs.getInt("payment_status");
-			UserTarif userTarif = new UserTarif(id_user, code, payment_status);
+			UserTarif userTarif = new UserTarif();
+			userTarif.setId_user(id_user);
+			userTarif.setCode(code);
+			userTarif.setPayment_status(payment_status);
 			return userTarif;
 		}
 		return null;

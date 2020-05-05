@@ -47,7 +47,9 @@ public class AddTarifToUserServlet extends HttpServlet {
 		int user_id = loginedUser.getUser_id();
 
 		String code = (String) request.getParameter("code");
-		UserTarif userTarif = new UserTarif(user_id, code);
+		UserTarif userTarif = new UserTarif();
+		userTarif.setId_user(user_id);
+		userTarif.setCode(code);
 
 		String errorString = null;
 

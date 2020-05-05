@@ -46,12 +46,30 @@
 					<tr>
 						<td><fmt:message key="service_id"></fmt:message></td>
 						<td><select name="service_id" size="1">
+						<c:choose>
+								<c:when test="${tarif.service_id == 1 }">
+									<option selected="selected" value="1"><fmt:message
+											key="internet"></fmt:message></option>
+									<option value="2"><fmt:message key="tv"></fmt:message></option>
+									<option value="3"><fmt:message key="calling"></fmt:message></option>
+								</c:when>
+								<c:when test="${tarif.service_id == 2 }">
+									<option selected="selected" value="2"><fmt:message
+											key="tv"></fmt:message></option>
+									<option value="1"><fmt:message key="internet"></fmt:message></option>
+									<option value="3"><fmt:message key="calling"></fmt:message></option>
+								</c:when>
 
-								<option selected="selected">${tarif.service_id}</option>
-								<option value="1"><fmt:message key="internet"></fmt:message></option>
-								<option value="2"><fmt:message key="tv"></fmt:message></option>
-								<option value="3"><fmt:message key="calling"></fmt:message></option>
-						</select></td>
+								<c:when test="${tarif.service_id == 3 }">
+									<option selected="selected" value="3"><fmt:message
+											key="calling"></fmt:message></option>
+									<option value="1"><fmt:message key="internet"></fmt:message></option>
+									<option value="2"><fmt:message key="tv"></fmt:message></option>
+								</c:when>
+
+							</c:choose>
+							</select>
+							</td>
 					</tr>
 					<tr>
 						<td colspan="3"><input type="submit"

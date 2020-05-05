@@ -82,20 +82,20 @@ public class UserTarif {
 				+ getPayment_status() + ", hashCode()=" + hashCode() + ", getClass()=" + getClass() + ", toString()="
 				+ super.toString() + "]";
 	}
-	public UserTarif(int id_user, String code, int payment_status) {
+	/*public UserTarif(int id_user, String code, int payment_status) {
 		super();
 		this.id_user = id_user;
 		this.code = code;
 		this.payment_status = payment_status;
-	}
+	}*/
 	public UserTarif() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	  public UserTarif(int id_user, String code) {
+	/*  public UserTarif(int id_user, String code) {
 		    super();
 		    this.id_user = id_user;
 		    this.code = code;
-		  }
+		  }*/
 	
 }

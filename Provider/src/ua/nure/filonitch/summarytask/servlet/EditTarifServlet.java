@@ -21,7 +21,7 @@ import ua.nure.filonitch.summarytask.utils.MyUtils;
 /**
  * @author D.Filonich
  *
- * EDIT TARIF SERVLET
+ *         EDIT TARIF SERVLET
  *
  */
 @WebServlet(urlPatterns = { "/editTarif" })
@@ -37,9 +37,9 @@ public class EditTarifServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+
 		LOGGER.debug("DOGET");
-		
+
 		Connection conn = MyUtils.getStoredConnection(request);
 
 		String code = (String) request.getParameter("code");
@@ -79,7 +79,7 @@ public class EditTarifServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		LOGGER.debug("DOPOST");
-		
+
 		Connection conn = MyUtils.getStoredConnection(request);
 
 		String code = (String) request.getParameter("code");
@@ -92,7 +92,12 @@ public class EditTarifServlet extends HttpServlet {
 			price = Float.parseFloat(priceStr);
 		} catch (Exception e) {
 		}
-		Tarif tarif = new Tarif(code, name, price, description, service_id);
+		Tarif tarif = new Tarif();
+		tarif.setCode(code);
+		tarif.setName(name);
+		tarif.setPrice(price);
+		tarif.setDescription(description);
+		tarif.setService_id(service_id);
 
 		String errorString = null;
 

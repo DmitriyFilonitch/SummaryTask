@@ -67,7 +67,12 @@ public class CreateTarifServlet extends HttpServlet {
 			price = Float.parseFloat(priceStr);
 		} catch (Exception e) {
 		}
-		Tarif tarif = new Tarif(code, name, price, description, service_id);
+		Tarif tarif = new Tarif();
+		tarif.setCode(code);
+		tarif.setName(name);
+		tarif.setPrice(price);
+		tarif.setDescription(description);
+		tarif.setService_id(service_id);
 
 		String errorString = null;
 

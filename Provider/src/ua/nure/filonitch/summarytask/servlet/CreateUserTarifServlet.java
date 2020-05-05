@@ -60,7 +60,9 @@ public class CreateUserTarifServlet extends HttpServlet {
 
 		// UserAccount user = null;
 		String code = (String) request.getParameter("code");
-		UserTarif userTarif = new UserTarif(id_user, code);
+		UserTarif userTarif = new UserTarif();
+		userTarif.setId_user(id_user);
+		userTarif.setCode(code);
 
 		String errorString = null;
 

@@ -45,10 +45,14 @@
 
 				<tr>
 					<td><fmt:message key="service_id"></fmt:message></td>
-					<td><input type="text" name="service_id"
-						value="${tarif.service_id}" /></td>
-				</tr>
+					<td><select name="service_id" size="1">
 
+							<option selected="selected" value="1"><fmt:message
+									key="internet"></fmt:message></option>
+							<option value="2"><fmt:message key="tv"></fmt:message></option>
+							<option value="3"><fmt:message key="calling"></fmt:message></option>
+					</select></td>
+				</tr>
 
 				<tr>
 					<td colspan="2"><input type="submit"

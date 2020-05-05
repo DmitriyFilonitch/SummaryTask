@@ -86,7 +86,10 @@ public class EditUserTarifServlet extends HttpServlet {
 		String code = (String) request.getParameter("code");
 		int payment_status = Integer.parseInt(request.getParameter("payment_status"));
 
-		UserTarif userTarif = new UserTarif(id_user, code, payment_status);
+		UserTarif userTarif = new UserTarif();
+		userTarif.setId_user(id_user);
+		userTarif.setCode(code);
+		userTarif.setPayment_status(payment_status);
 
 		String errorString = null;
 
