@@ -69,8 +69,10 @@
 			<select name="op">
 				<option value="1"><fmt:message key="sort_by_name"></fmt:message>(A-Z)
 
+
 				
 				<option value="2"><fmt:message key="sort_by_name"></fmt:message>(Z-A)
+
 
 				
 			</select> <input type="submit"
@@ -117,26 +119,34 @@
 			<select name="opT">
 				<option value="1"><fmt:message key="sort_by_price"></fmt:message>(9-1)
 
+
 				
 				<option value="2"><fmt:message key="sort_by_price"></fmt:message>(1-9)
+
 
 				
 				<option value="3"><fmt:message key="sort_by_code"></fmt:message>(A-Z)
 
+
 				
 				<option value="4"><fmt:message key="sort_by_code"></fmt:message>(Z-A)
+
 
 				
 				<option value="5"><fmt:message key="sort_by_service_id"></fmt:message>(9-1)
 
+
 				
 				<option value="6"><fmt:message key="sort_by_service_id"></fmt:message>(1-9)
+
 
 				
 				<option value="7"><fmt:message key="sort_by_name"></fmt:message>(A-Z)
 
+
 				
 				<option value="8"><fmt:message key="sort_by_name"></fmt:message>(Z-A)
+
 
 				
 			</select> <input type="submit"
@@ -189,14 +199,18 @@
 			<select name="opU">
 				<option value="1"><fmt:message key="sort_by_id_common"></fmt:message>(9-1)
 
+
 				
 				<option value="2"><fmt:message key="sort_by_id_common"></fmt:message>(1-9)
+
 
 				
 				<option value="3"><fmt:message key="sort_by_username"></fmt:message>(A-Z)
 
+
 				
 				<option value="4"><fmt:message key="sort_by_username"></fmt:message>(Z-A)
+
 
 				
 			</select> <input type="submit"
@@ -240,19 +254,42 @@
 			<select name="opUT">
 				<option value="1"><fmt:message key="sort_by_user_id"></fmt:message>(9-1)
 
+
 				
 				<option value="2"><fmt:message key="sort_by_user_id"></fmt:message>(1-9)
+
 
 				
 				<option value="3"><fmt:message key="sort_by_code"></fmt:message>(A-Z)
 
+
 				
 				<option value="4"><fmt:message key="sort_by_code"></fmt:message>(Z-A)
+
 
 				
 			</select> <input type="submit"
 				value="<fmt:message key="admininfo_sort"></fmt:message>">
 		</form>
+
+
+
+	
+	<table border="1" cellpadding="5" cellspacing="1" align="center">
+			<tr>
+				<th>Название тарифа</th>
+				<th>Колличество должников</th>
+				
+			</tr>
+			<c:forEach items="${dolgList}" var="dolg">
+				<tr>
+					<td style="text-align: center">${dolg.tarif_name}</td>
+					<td style="text-align: center">${dolg.countOfDolgs}</td>
+					
+				</tr>
+			</c:forEach>
+		</table>
+
 
 	</div>
 	<br />

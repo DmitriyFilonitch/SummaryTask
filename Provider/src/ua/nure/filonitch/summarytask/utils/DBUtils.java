@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import ua.nure.filonitch.summarytask.beans.DolgList;
 import ua.nure.filonitch.summarytask.beans.Services;
 import ua.nure.filonitch.summarytask.beans.Tarif;
 import ua.nure.filonitch.summarytask.beans.UserAccount;
@@ -16,7 +17,7 @@ import ua.nure.filonitch.summarytask.beans.UserTarif;
 /**
  * @author D.Filonich
  *
- * METHODS FOR EXECUTING AND PROCCESSING SQL REQUESTS
+ *         METHODS FOR EXECUTING AND PROCCESSING SQL REQUESTS
  *
  */
 public class DBUtils {
@@ -62,7 +63,8 @@ public class DBUtils {
 	private static final String UPDATE_PAYMENT_STATUS_RESET = " UPDATE USERS_TARIF SET PAYMENT_STATUS=2 WHERE ID_USER=? AND CODE=?";
 	private static final String GET_BALANCE = "SELECT BALANCE FROM USER_ACCOUNT WHERE USER_ID=?";
 	private static final String UPDATE_BALANCE = "UPDATE USER_ACCOUNT SET BALANCE=? WHERE USER_ID=?";
-	private static final String SET_BLOCK_STATUS = "UPDATE USER_ACCOUNT SET BLOCK_STATUS=? WHERE USER_ID=?";;
+	private static final String SET_BLOCK_STATUS = "UPDATE USER_ACCOUNT SET BLOCK_STATUS=? WHERE USER_ID=?";
+	private static final String SELECT_ALL_DOLGS = "SELECT NAME, COUNT(payment_status) AS \"amount_dolgs\" FROM users_tarif INNER JOIN tarif ON users_tarif.code = tarif.code WHERE payment_status = 2 GROUP BY name";
 
 	private static DBUtils instance;
 
@@ -93,7 +95,7 @@ public class DBUtils {
 			boolean active_status = rs.getBoolean("active_status");
 			String nameRole = rs.getString("Name");
 			UserAccount user = new UserAccount();
-		
+
 			user.setUser_id(user_id);
 			user.setUserName(userName);
 			user.setFullname(fullname);
@@ -103,7 +105,7 @@ public class DBUtils {
 			user.setRole_id(role_id1);
 			user.setActive_status(active_status);
 			user.setNameRole(nameRole);
-			
+
 			return user;
 		}
 		return null;
@@ -118,12 +120,12 @@ public class DBUtils {
 
 		if (rs.next()) {
 			int user_id = rs.getInt("user_id");
-			//String password = rs.getString("Password");
+
 			String gender = rs.getString("Gender");
 			float balance = rs.getFloat("balance");
 			boolean block_status = rs.getBoolean("block_status");
 			boolean active_status = rs.getBoolean("active_status");
-			// int role_id = rs.getInt("role_id");
+
 			UserAccount user = new UserAccount();
 			user.setUser_id(user_id);
 			user.setUserName(userName);
@@ -132,7 +134,7 @@ public class DBUtils {
 			user.setBalance(balance);
 			user.setBlock_status(block_status);
 			user.setActive_status(active_status);
-			
+
 			return user;
 		}
 		return null;
@@ -267,7 +269,7 @@ public class DBUtils {
 		ResultSet rs = pstm.executeQuery();
 
 		while (rs.next()) {
-			// int user_id = rs.getInt("user_id");
+
 			String userName = rs.getString("User_name");
 			String fullname = rs.getString("Fullname");
 			String gender = rs.getString("gender");
@@ -277,7 +279,7 @@ public class DBUtils {
 			boolean active_status = rs.getBoolean("active_status");
 			String nameRole = rs.getString("name");
 			UserAccount user = new UserAccount();
-			
+
 			user.setUser_id(user_id);
 			user.setUserName(userName);
 			user.setFullname(fullname);
@@ -287,7 +289,7 @@ public class DBUtils {
 			user.setRole_id(role_id);
 			user.setActive_status(active_status);
 			user.setNameRole(nameRole);
-			
+
 			return user;
 		}
 		return null;
@@ -316,7 +318,7 @@ public class DBUtils {
 		pstm.setString(1, tarif.getName());
 		pstm.setFloat(2, tarif.getPrice());
 		pstm.setString(3, tarif.getDescription());
-		// pstm.setString(4, tarif.getCode());
+
 		pstm.setInt(4, tarif.getService_id());
 		pstm.setString(5, tarif.getCode());
 
@@ -379,7 +381,6 @@ public class DBUtils {
 		pstm.setString(4, user.getPassword());
 		pstm.setFloat(5, user.getBalance());
 		pstm.setInt(6, user.getRole_id());
-		
 
 		pstm.executeUpdate();
 	}
@@ -520,11 +521,11 @@ public class DBUtils {
 			String service_name = rs.getString("service_name");
 			String service_description = rs.getString("service_description");
 			Services services = new Services();
-			
+
 			services.setService_id(service_id);
 			services.setService_name(service_name);
 			services.setService_description(service_description);
-			
+
 			return services;
 		}
 		return null;
@@ -714,6 +715,24 @@ public class DBUtils {
 		pstm.setBoolean(1, user.isBlock_status());
 		pstm.setInt(2, user.getUser_id());
 		pstm.executeUpdate();
+	}
+
+	public static List<DolgList> getDolgList(Connection conn) throws SQLException {
+		PreparedStatement pstm = conn.prepareStatement(SELECT_ALL_DOLGS);
+
+		ResultSet rs = pstm.executeQuery();
+		List<DolgList> list = new ArrayList<DolgList>();
+		while (rs.next()) {
+			String tarif_name = rs.getString("name");
+			int countOfDolgs = rs.getInt("amount_dolgs");
+
+			DolgList d = new DolgList();
+			d.setTarif_name(tarif_name);
+			d.setCountOfDolgs(countOfDolgs);
+
+			list.add(d);
+		}
+		return list;
 	}
 
 }

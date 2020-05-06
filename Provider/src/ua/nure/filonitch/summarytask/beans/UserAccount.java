@@ -3,7 +3,7 @@ package ua.nure.filonitch.summarytask.beans;
 /**
  * @author D.Filonich
  *
- * USER ENTITY
+ *         USER ENTITY
  *
  */
 public class UserAccount {
@@ -21,156 +21,179 @@ public class UserAccount {
 	private int role_id;
 	private boolean active_status;
 	private String nameRole;
+
 	/**
 	 * @return the gENDER_MALE
 	 */
 	public static String getGENDER_MALE() {
 		return GENDER_MALE;
 	}
+
 	/**
 	 * @param gENDER_MALE the gENDER_MALE to set
 	 */
 	public static void setGENDER_MALE(String gENDER_MALE) {
 		GENDER_MALE = gENDER_MALE;
 	}
+
 	/**
 	 * @return the gENDER_FEMALE
 	 */
 	public static String getGENDER_FEMALE() {
 		return GENDER_FEMALE;
 	}
+
 	/**
 	 * @param gENDER_FEMALE the gENDER_FEMALE to set
 	 */
 	public static void setGENDER_FEMALE(String gENDER_FEMALE) {
 		GENDER_FEMALE = gENDER_FEMALE;
 	}
+
 	/**
 	 * @return the user_id
 	 */
 	public int getUser_id() {
 		return user_id;
 	}
+
 	/**
 	 * @param user_id the user_id to set
 	 */
 	public void setUser_id(int user_id) {
 		this.user_id = user_id;
 	}
+
 	/**
 	 * @return the userName
 	 */
 	public String getUserName() {
 		return userName;
 	}
+
 	/**
 	 * @param userName the userName to set
 	 */
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
+
 	/**
 	 * @return the fullname
 	 */
 	public String getFullname() {
 		return fullname;
 	}
+
 	/**
 	 * @param fullname the fullname to set
 	 */
 	public void setFullname(String fullname) {
 		this.fullname = fullname;
 	}
+
 	/**
 	 * @return the gender
 	 */
 	public String getGender() {
 		return gender;
 	}
+
 	/**
 	 * @param gender the gender to set
 	 */
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
+
 	/**
 	 * @return the password
 	 */
 	public String getPassword() {
 		return password;
 	}
+
 	/**
 	 * @param password the password to set
 	 */
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
 	/**
 	 * @return the balance
 	 */
 	public float getBalance() {
 		return balance;
 	}
+
 	/**
 	 * @param balance the balance to set
 	 */
 	public void setBalance(float balance) {
 		this.balance = balance;
 	}
+
 	/**
 	 * @return the block_status
 	 */
 	public boolean isBlock_status() {
 		return block_status;
 	}
+
 	/**
 	 * @param block_status the block_status to set
 	 */
 	public void setBlock_status(boolean block_status) {
 		this.block_status = block_status;
 	}
+
 	/**
 	 * @return the role_id
 	 */
 	public int getRole_id() {
 		return role_id;
 	}
+
 	/**
 	 * @param role_id the role_id to set
 	 */
 	public void setRole_id(int role_id) {
 		this.role_id = role_id;
 	}
+
 	/**
 	 * @return the active_status
 	 */
 	public boolean isActive_status() {
 		return active_status;
 	}
+
 	/**
 	 * @param active_status the active_status to set
 	 */
 	public void setActive_status(boolean active_status) {
 		this.active_status = active_status;
 	}
+
 	/**
 	 * @return the nameRole
 	 */
 	public String getNameRole() {
 		return nameRole;
 	}
+
 	/**
 	 * @param nameRole the nameRole to set
 	 */
 	public void setNameRole(String nameRole) {
 		this.nameRole = nameRole;
 	}
-	
-	 public void setRole_id(String role_id2) {
-		    this.role_id = role_id;
-		  }
-	
-	
+
+	public void setRole_id(String role_id2) {
+		this.role_id = role_id;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -187,6 +210,7 @@ public class UserAccount {
 		result = prime * result + user_id;
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -233,6 +257,7 @@ public class UserAccount {
 			return false;
 		return true;
 	}
+
 	@Override
 	public String toString() {
 		return "UserAccount [user_id=" + user_id + ", userName=" + userName + ", fullname=" + fullname + ", gender="
@@ -245,11 +270,10 @@ public class UserAccount {
 				+ ", hashCode()=" + hashCode() + ", getClass()=" + getClass() + ", toString()=" + super.toString()
 				+ "]";
 	}
+
 	public UserAccount() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
-
 
 }

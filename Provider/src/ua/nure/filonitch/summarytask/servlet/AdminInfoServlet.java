@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import ua.nure.filonitch.summarytask.beans.DolgList;
 import ua.nure.filonitch.summarytask.beans.Services;
 import ua.nure.filonitch.summarytask.beans.Tarif;
 import ua.nure.filonitch.summarytask.beans.UserAccount;
@@ -85,6 +86,11 @@ public class AdminInfoServlet extends HttpServlet {
 		String opUT = request.getParameter("opUT");
 		if (opUT == null) {
 			opUT = "2";
+		}
+
+		String dolg = request.getParameter("dolg");
+		if (dolg == null) {
+			dolg = "2";
 		}
 
 		String errorString = null;
@@ -179,6 +185,17 @@ public class AdminInfoServlet extends HttpServlet {
 		} else if (opUT.equals("4")) {
 			Manipulate.getUsersTarifSortedByCodeZA(list3);
 		}
+
+		String errorString4 = null;
+
+		try {
+			List<DolgList> dolgList = DBUtils.getDolgList(conn);	
+			request.setAttribute("dolgList", dolgList);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		request.setAttribute("errorString", errorString4);
 
 		// Сохранить информацию в request attribute перед тем как forward к views.
 		request.setAttribute("errorString3", errorString3);
